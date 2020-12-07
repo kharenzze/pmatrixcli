@@ -1,17 +1,16 @@
 import fire
-from db import db
+from db import Data
 
 class App(object):
 
-  def save(self, text):
-    db.insert({'text': text})
+  def save(self, token):
+    Data.setToken(token)
     return 'Saved!'
 
 
   def read(self):
-    all = db.all()
-    print(all)
-    print('Read')
+    token = Data.getToken()
+    print(token)
 
 if __name__ == '__main__':
   fire.Fire(App)
