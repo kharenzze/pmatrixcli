@@ -1,7 +1,17 @@
 import fire
+from db import db
 
-def hello(name="World"):
-  return "Hello %s!" % name
+class App(object):
+
+  def save(self, text):
+    db.insert({'text': text})
+    return 'Saved!'
+
+
+  def read(self):
+    all = db.all()
+    print(all)
+    print('Read')
 
 if __name__ == '__main__':
-  fire.Fire(hello)
+  fire.Fire(App)
