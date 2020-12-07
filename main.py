@@ -1,14 +1,20 @@
 import fire
 from db import Data
+from prioritymatrix import PM
+
+def getPM():
+  token = Data.getToken()
+  if not token:
+    raise 'You need to set a token'
+  return PM("https://sync.appfluence.com/api/v1/", token)
 
 class App(object):
 
-  def save(self, token):
+  def token(self, token):
     Data.setToken(token)
     return 'Saved!'
 
-
-  def read(self):
+  def show_token(self):
     token = Data.getToken()
     print(token)
 
